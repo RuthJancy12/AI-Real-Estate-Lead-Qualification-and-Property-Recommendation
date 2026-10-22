@@ -1,0 +1,17 @@
+{
+  "comment": "LYKA Realty Realtime Database rules. users/{uid}: owner-only (unchanged). staff/{uid}: self-read plus admin-claim read; admin-claim write only. Set the Firebase custom claim {\"role\":\"admin\"} on the admin user via Console/Admin SDK (see create_admin.py). Paste into Firebase Console → Realtime Database → Rules, then Publish.",
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "staff": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.token.role === 'admin')",
+        ".write": "auth != null && auth.token.role === 'admin'"
+      }
+    }
+  }
+}

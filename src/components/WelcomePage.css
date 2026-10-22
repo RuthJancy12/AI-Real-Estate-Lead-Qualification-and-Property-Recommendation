@@ -1,0 +1,159 @@
+/* ============================================================
+   LYKA Welcome / Home screen — first-visit overlay.
+   Uses the dashboard design tokens from index.css only
+   (champagne, rose, plum, gold). Scoped to .lyka-welcome-*.
+   ============================================================ */
+
+.lyka-welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  background:
+    linear-gradient(180deg, rgba(26, 13, 24, 0.62) 0%, rgba(26, 13, 24, 0.88) 100%),
+    url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2200&q=85')
+    center 40% / cover no-repeat;
+  animation: lyka-welcome-fade-in 0.3s ease;
+}
+
+.lyka-welcome-card {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+  background: var(--champagne-card);
+  border: 1px solid var(--champagne-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 44px 40px 36px;
+  animation: lyka-welcome-pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lyka-welcome-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(90deg, var(--rose-primary), var(--gold-primary), var(--rose-primary));
+}
+
+.lyka-welcome-logo {
+  display: inline-flex;
+  align-items: center;
+  background: var(--plum-deep);
+  border: 1px solid var(--gold-border);
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 18px;
+}
+
+.lyka-welcome-logo img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.lyka-welcome-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--rose-primary);
+  margin-bottom: 10px;
+}
+
+.lyka-welcome-card h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 600;
+  color: var(--plum-main);
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.lyka-welcome-card h1 em {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--rose-primary), var(--gold-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lyka-welcome-card > p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0 auto 22px;
+}
+
+.lyka-welcome-features {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.lyka-welcome-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--plum-main);
+  background: var(--champagne-surface);
+  border: 1px solid var(--champagne-border);
+  border-radius: var(--radius-full);
+  padding: 7px 14px;
+}
+
+.lyka-welcome-feature svg {
+  color: var(--rose-primary);
+}
+
+.lyka-welcome-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.lyka-welcome-actions .gold-btn {
+  font-size: 15px;
+  padding: 13px 34px;
+}
+
+.lyka-welcome-note {
+  margin-top: 16px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+@keyframes lyka-welcome-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lyka-welcome-pop-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 560px) {
+  .lyka-welcome-card {
+    padding: 32px 22px 28px;
+  }
+
+  .lyka-welcome-actions .gold-btn,
+  .lyka-welcome-actions .outline-navy-btn {
+    width: 100%;
+  }
+}

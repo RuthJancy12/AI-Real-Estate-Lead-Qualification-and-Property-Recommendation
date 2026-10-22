@@ -1,0 +1,1 @@
+﻿# LYKA Realty PRD placeholder

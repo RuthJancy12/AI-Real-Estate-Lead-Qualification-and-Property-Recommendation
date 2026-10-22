@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+openai
+httpx
+python-dotenv
+firebase-admin
+sqlalchemy
+email-validator
